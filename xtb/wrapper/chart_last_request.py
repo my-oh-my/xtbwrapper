@@ -1,9 +1,6 @@
 import datetime
 import time
 
-import pandas as pd
-from pandas import DataFrame
-
 from xtb.wrapper.logger import logger
 from xtb.wrapper.xtb_client import APIClient, CommandFailed
 
@@ -106,6 +103,3 @@ class ChartLastRequest(object):
         initialDaysRequested = self.decide_on_days_history(period)
 
         return self.request_with_limit(period, initialDaysRequested, symbol)
-
-    def collect_from_api(self, symbol, period) -> DataFrame:
-        return pd.DataFrame(self.request_candle_history_with_limit(symbol, period))
